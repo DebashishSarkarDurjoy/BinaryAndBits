@@ -1,9 +1,10 @@
 #include <iostream>
 #include <math.h>
 #include <string>
+#include <stack>
 using namespace std;
 
-int bitsToInt(char bitList[]) {
+int bitsToInt(char bitList[], bool show) {
   char bit = '0';
 
   int digits = 0;
@@ -30,12 +31,35 @@ int bitsToInt(char bitList[]) {
     placeValue *= 0.5;
   }
 
+  if (show) {
+    cout << bitList << " is " << result << endl;
+    return 0;
+  }
+
   return result;
+}
+
+void intToBits(string bitList) {
+  int num = stoi(bitList);
+  stack<int> bits;
+
+  int temp = num;
+  while (temp != 0) {
+    bits.push(temp % 2);
+    temp *= 0.5;
+  }
+
+  cout << num << " is ";
+  while (!bits.empty()) {
+    cout << bits.top();
+    bits.pop();
+  }
+  cout << endl;
 }
 
 int main(int argc, char* argv[]) {
 
-  cout << argv[1] << " is " << bitsToInt(argv[1]) << endl;
+  intToBits(argv[1]);
 
   return 0;
 }
