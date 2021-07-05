@@ -2,6 +2,7 @@
 #include <math.h>
 #include <string>
 #include <stack>
+#include <bitset>
 using namespace std;
 
 int bitsToInt(char bitList[], bool show) {
@@ -58,8 +59,14 @@ void intToBits(string bitList) {
 }
 
 int main(int argc, char* argv[]) {
+  //bitsToInt();
+  //intToBits();
 
-  intToBits(argv[1]);
+  bitset<8> bits (string("101"));
+  cout << bits.to_ulong() << endl;
+
+  bitset<15> newBits (15);
+  cout << newBits << endl;
 
   return 0;
 }
